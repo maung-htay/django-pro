@@ -1,0 +1,16 @@
+python -m venv venv 
+
+# Activate Environment 
+source venv/bin/Activate
+
+# Install Django project
+python -m pip install django
+
+# Upgrade pip
+python -m pip install --upgrade pip
+
+# Create django project 
+django-admin startproject my_project .
+
+# Create django app
+python manage.py startapp my_app
