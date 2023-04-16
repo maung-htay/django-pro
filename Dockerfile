@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /code
 
 # copy requirements.txt
-COPY ./requirements .
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 # copy project 
