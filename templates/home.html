@@ -1,17 +1,8 @@
-{% extends "_base.html" %}
-
-{% block title %} Home {% endblock title %}
-
+<!-- templates/home.html -->
+{% extends "_base.html" %} 
+{% load static %} 
+{% block title %}Home{% endblock title %} 
 {% block content %}
-  <h1>Home</h1>
-  <p>Welcome to the BookStore!</p>
-  {% if user.is_authenticated %}
-    <p>You are logged in as {{ user.username }}.</p>
-    <p><a href="{% url 'logout' %}">Log Out</a> </p>
-  {% else %}
-    <p>You are not logged in.</p>
-    <a href="{% url 'login' %}">Login</a> 
-    <a href="{% url 'signup' %}">Sign Up</a>
-  {% endif %}
-
+ <h1>This is our home page.</h1>
+ <img class="bookcover" src="{% static 'images/images.jpeg' %}" />
 {% endblock content %}
