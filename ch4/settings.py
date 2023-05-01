@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     # "rest_framework",
     # Local
     "accounts.apps.AccountsConfig",
-    "pages.apps.PagesConfig"
+    "pages.apps.PagesConfig",
+    "books.apps.BooksConfig",
 ]
 
 # django-allauth config
