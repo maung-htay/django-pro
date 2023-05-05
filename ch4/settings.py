@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic", # new
     "django.contrib.staticfiles",
     "django.contrib.sites",
     # Third-party
@@ -105,6 +106,7 @@ CSRF_COOKIE_SECURE = env.bool("DJANGO_CSRF_COOKIE_SECURE", default=False)
 MIDDLEWARE = [
     "django.middleware.cache.UpdateCacheMiddleware", # new
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware", # new
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -114,6 +116,8 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware", # new
     "django.middleware.cache.FetchFromCacheMiddleware", # new
 ]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage" # new
 
 CACHE_MIDDLEWARE_ALIAS = "default"
 CACHE_MIDDLEWARE_SECONDS = 604800
