@@ -139,3 +139,4 @@ GitHub.sublime-settings
 .DS_Store
 .DS_Store
 staticfiles
+docker-compose-prod.yml

@@ -20,6 +20,7 @@ services:
     depends_on:
       - db
     environment:
-      DJANGO_DEBUG: True
+      - "DJANGO_SECRET_KEY=4WdVM4mDzgd2pi-s4uz19j-UVU_2PYBGqpbm5mY-slBMOzXLLq8"
+      - "DJANGO_DEBUG=True"
 volumes:
   db_data:
