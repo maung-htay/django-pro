@@ -14,3 +14,6 @@ git remote add origin url
 git push -u origin master
 git checkout -b dev
 git push origin dev
+
+python -m pip install django-cors-headers
+# Need to insert corsheaders
