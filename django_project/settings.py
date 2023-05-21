@@ -36,13 +36,15 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "whitenoise.runserver_nostatic",
-    "django.contrib.staticfiles", # new
+    "whitenoise.runserver_nostatic", # new
+    "django.contrib.staticfiles", 
     
     "rest_framework",
     "corsheaders",
     
-    "todos.apps.TodosConfig"
+    "todos.apps.TodosConfig",
+    "accounts.apps.AccountsConfig",
+    "posts.apps.PostsConfig",
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -53,6 +55,7 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware", # new
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -68,6 +71,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+
+AUTH_USER_MODEL = "accounts.CustomerUser"
 
 ROOT_URLCONF = "django_project.urls"
 
