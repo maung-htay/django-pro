@@ -36,26 +36,46 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "whitenoise.runserver_nostatic", # new
-    "django.contrib.staticfiles", 
-    
+    "whitenoise.runserver_nostatic",  # new
+    "django.contrib.staticfiles",
+    "django.contrib.sites",
+
     "rest_framework",
     "corsheaders",
-    
+    "rest_framework.authtoken",  # new
+    "allauth",  # new
+    "allauth.account",  # new
+    "allauth.socialaccount",  # new
+    "dj_rest_auth",  # new for token creating and login
+    "dj_rest_auth.registration",
+
+    # "todos.apps.TodosConfig",
+    # "accounts.apps.AccountsConfig",
+
     "todos.apps.TodosConfig",
     "accounts.apps.AccountsConfig",
     "posts.apps.PostsConfig",
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        # 'rest_framework.permissions.AllowAny', # all access
+        "rest_framework.permissions.IsAuthenticated",  # only login user
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        # Default Authentication
+        # "rest_framework.authentication.SessionAuthentication",
+        # "rest_framework.authentication.BasicAuthentication",
+
+        # Implementing token authentication
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
     ],
 }
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware", # new
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # new
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -87,10 +107,16 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.request",
             ],
         },
     },
 ]
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+SITE_ID = 1
+
 
 WSGI_APPLICATION = "django_project.wsgi.application"
 
